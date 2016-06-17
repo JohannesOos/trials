@@ -11,16 +11,23 @@ connection = pymongo.MongoClient("mongodb://localhost")
 
 #time creation of conention
 t1 = time.time()
-
+print "conenction takes s: " + str(t1-t0)
+t1 = time.time()
 
 # get a handle to the th new sample database and coleltion
 connection.drop_database("new_test")
 
 t2 = time.time()
+print "droppung takes s: " + str(t2-t1)
+t2 = time.time()
 
 db=connection.new_test
 co = db.index_text
 # get time for creaetion (is lazy so nothing shoudl have happend)
+t3 = time.time()
+
+print "creation takes s: " + str(t3-t2)
+
 t3 = time.time()
 
 for a in range(100):
@@ -30,6 +37,9 @@ for a in range(100):
 
 #inserted the 10,000 documents
 t4 = time.time()
+print "inserting takes s: " + str(t4-t3)
+t4 = time.time()
+
 
 #def find():
 #
