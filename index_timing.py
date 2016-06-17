@@ -1,7 +1,8 @@
 
 import pymongo
-import sys
+#import sys
 import time 
+#import random
 
 #start timer
 t0 = time.time()
@@ -40,54 +41,32 @@ t4 = time.time()
 print "inserting takes s: " + str(t4-t3)
 t4 = time.time()
 
+#create test docs
 
-#def find():
-#
-#    print "reporting for duty"
-#    
-#    
-#
-#    query = {"year":2000}
-#    #projection = {}
-#    #projection = {"year":1, "score":1}
-#    #e from the year 2013 that is rated PG-13 and won no awards?
-##    a = de.find(query)
-##    return a
-#
-#    a = de.find(query)
-#    print type(a)
-#    return a.explain()
-#    #print a
-#    
-##    id_field = 0
-#    #counter = 0
-##    for c in a:
-###        if len(c['countries']) >=2:
-###            if c['countries'][1] == "Sweden":
-###                counter +=1
-###        c_id = c['student_id']
-###        c_ob = c['_id']
-###        if c_id == id_field:
-###            grades.delete_one({'_id': c_ob})
-###            
-###        id_field = c_id
-###
-##        print c
-#      
-#    #b = de.find_one()
-#
-##    print b
-#    #print de.find_one().pretty()
-##    try:
-##        grades.delete_many(query)
-##    except Exception as e:
-##        print "Unexpected error:", type(e), e
-#
-#
-#print ('Pos path creation', time.time() - t0)        
-#
-#print find()
-#
-#print ('Pos path creation', time.time() - t0)
-#
-#a = find()
+doc1 = co.find({"a":50, "b": 5, "c":5})
+
+t5 = time.time()
+print "fidn in the middle: " + str(t5-t4)
+t5 = time.time()
+
+doc2 = co.find({"a":0, "b": 0, "c":0})
+
+t6 = time.time()
+print "fidn at start: " + str(t6-t5)
+t6 = time.time()
+
+
+doc3 = co.find({"a":99, "b": 9, "c":9})
+
+t7 = time.time()
+print "fidn at end: " + str(t7-t6)
+t7 = time.time()
+
+doc4 = co.find({"c":9})
+
+t8 = time.time()
+print "find single c: " + str(t8-t7)
+t8 = time.time()
+
+    
+
