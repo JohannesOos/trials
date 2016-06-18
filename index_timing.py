@@ -4,6 +4,10 @@ import pymongo
 import time 
 #import random
 
+
+#set setup to FAls if database exists already with 1m entries
+setup = False
+
 #start timer
 t0 = time.time()
 
@@ -16,7 +20,8 @@ print "conenction takes s: " + str(t1-t0)
 t1 = time.time()
 
 # get a handle to the th new sample database and coleltion
-connection.drop_database("new_test")
+if setup == True:
+    connection.drop_database("new_test")
 
 t2 = time.time()
 print "droppung takes s: " + str(t2-t1)
@@ -31,12 +36,13 @@ print "creation takes s: " + str(t3-t2)
 
 t3 = time.time()
 
-for a in range(100):
-    for b in range(10):
-        for c in range(10):
-            co.insert_one({"a":a, "b": b, "c":c})
+if setup == True:
+    for a in range(100):
+        for b in range(100):
+            for c in range(100):
+                co.insert_one({"a":a, "b": b, "c":c})
 
-#inserted the 10,000 documents
+#inserted the 1,000,000 documents
 t4 = time.time()
 print "inserting takes s: " + str(t4-t3)
 t4 = time.time()
