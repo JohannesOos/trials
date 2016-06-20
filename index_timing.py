@@ -52,20 +52,20 @@ t4 = time.time()
 doc1 = co.find({"a":50, "b": 5, "c":5})
 
 t5 = time.time()
-print "fidn in the middle: " + str(t5-t4)
+print "find in the middle: " + str(t5-t4)
 t5 = time.time()
 
 doc2 = co.find({"a":0, "b": 0, "c":0})
 
 t6 = time.time()
-print "fidn at start: " + str(t6-t5)
+print "find at start: " + str(t6-t5)
 t6 = time.time()
 
 
 doc3 = co.find({"a":99, "b": 9, "c":9})
 
 t7 = time.time()
-print "fidn at end: " + str(t7-t6)
+print "find at end: " + str(t7-t6)
 t7 = time.time()
 
 doc4 = co.find({"c":9})
