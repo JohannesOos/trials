@@ -71,7 +71,7 @@ t7 = time.time()
 doc4 = co.find({"c":9})
 
 t8 = time.time()
-print "find single c: " + str(t8-t7)
+print "find all c#s equal 9: " + str(t8-t7)
 t8 = time.time()
 
     
