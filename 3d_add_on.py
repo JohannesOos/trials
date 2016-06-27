@@ -5,7 +5,6 @@ import pymongo
 connection = pymongo.MongoClient("mongodb://localhost")
 
 
-
 # use the correct database
 db=connection.geo_trial
 
