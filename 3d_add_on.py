@@ -6,7 +6,7 @@ connection = pymongo.MongoClient("mongodb://localhost")
 
 
 
-# create again
+# define database
 db=connection.geo_trial
 
 #drop existing collection
@@ -24,6 +24,6 @@ for a in range(10):
             geo.insert_one({"loc" : [a,b], "height": c })
         
 
-    
+
 
 
