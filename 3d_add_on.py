@@ -5,13 +5,19 @@ import pymongo
 connection = pymongo.MongoClient("mongodb://localhost")
 
 
-# use the correct database
+
+# create again
 db=connection.geo_trial
+
+#drop existing collection
+db.trial_one.drop()
 
 #use the set up trial database
 geo = db.trial_one
 
 #insert first coordinate
-geo.insert_one({"loc" : { "lng" : 0.1 , "lat" : 0.1 }})
+for a in range(10):
+    for b in range(10):
+        geo.insert_one({"loc" : { "lng" : a , "lat" : b }})
 
 
