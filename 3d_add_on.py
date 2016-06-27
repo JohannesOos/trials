@@ -18,6 +18,10 @@ geo = db.trial_one
 #insert first coordinate
 for a in range(10):
     for b in range(10):
-        geo.insert_one({"loc" : { "lng" : a , "lat" : b }})
+        for c in range(10):
+            geo.insert_one({"loc" : { "lng" : a , "lat" : b }, "height": c })
+        
+
+    
 
 
