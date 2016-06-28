@@ -26,11 +26,13 @@ for a in range(10):
 #create index       
 geo.create_index( [( "loc", "2d" ) ])
 
-# create query for in rectangle
-query = {"loc": {"$within": {"$box": [[3, 3], [5, 5]]}}}
+# create pipeline for aggregation
+pipeline_1 = [{"$match": {"loc": {"$within": {"$box": [[3, 3], [5, 5]]}}}}]
+pipeline_2 = [{"$match": {"height": { "$lte": 5}}}]
+pipeline_3 = [{"$match": {"height": { "$gte": 4}}}]
 
 #query for 2d results
-for place in geo.find(query):
+for place in geo.aggregate(pipeline_1 + pipeline_2+ pipeline_3):
     print place
 
         
