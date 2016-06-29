@@ -52,13 +52,40 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
     database must have coordinates of form ({"loc" : [a,b], "height": c})
     return: a translated aggregation pipeline
     """
-    #input validation
+    #check if all 3d coordinates
     if len(a) != 3 or len(b) !=3 or len(c) != 3:
         return "not 3d coordinates"
-        
+      
+    #check if a and b in same z coordinate
     if a[2] != b [2]:
         return "a and b not in same plane - check needed"
         
+    #create pymongoe in box statement
+    corner1 = [a[0], a[1]]
+    corner2 = [b[0], b[1]]
+    pipe_rectangle = [{"$match": {name_2d: {"$within": {"$box": [corner1, corner2]}}}}]
+    
+    
+    # check if c is under or over a-b plane and adjust bounds accordingly
+    low = c[2]
+    high = a[2]
+    if a[2]< low:
+        low = a[2]
+        high = c[2]
+        
+    # create lower boundary
+    lower = [{"$match": {name_height: { "$gte": low}}}]
+    
+    # create upper boundary
+    upper = [{"$match": {name_height: { "$lte": high}}}]
+    
+    #create pymongo height check
+    pipe_height = lower + upper
+    
+    #create pymongo complete check
+    pipeline = pipe_rectangle + pipe_height
+    
+    return pipeline
     
         
     
