@@ -43,22 +43,32 @@ for place in geo.aggregate(pipeline_1 + pipeline_2+ pipeline_3):
     
 print "3d query done"
     
-def rec_3d_add(a,b,c):
+def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
     """
-    input: a 3d query of form is_inside([[a1,a2,a3], [b1,b2,b3], [c1,c2,c3]])
+    input: 
+    3 points of form ([[a1,a2,a3], [b1,b2,b3], [c1,c2,c3]])
+    to create cuboid --> shaoe to be inspected
+    name of sphere document and height document
     database must have coordinates of form ({"loc" : [a,b], "height": c})
-    return: a translated query
+    return: a translated aggregation pipeline
     """
     #input validation
+    if len(a) != 3 or len(b) !=3 or len(c) != 3:
+        return "not 3d coordinates"
+        
     if a[2] != b [2]:
         return "a and b not in same plane - check needed"
+        
+    
+        
+    
 
     
 
 
 
-search = [[2,2,2], [3,3,3],[2,2,4]]
-print rec_3d_add(search[0],search[1],search[2])
+search = [[2,2,2], [3,3,2],[2,2,4]]
+print rec_3d_pipe(search[0],search[1],search[2])
 
         
 
