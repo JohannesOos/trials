@@ -90,12 +90,19 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
         
     
 
-    
 
+################################
+#create some tests
 
+################################
 
 search = [[2,2,2], [3,3,2],[2,2,4]]
-print rec_3d_pipe(search[0],search[1],search[2])
+pipe =  rec_3d_pipe(search[0],search[1],search[2])
+
+print pipe
+
+for place in geo.aggregate(pipe):
+    print place
 
         
 
