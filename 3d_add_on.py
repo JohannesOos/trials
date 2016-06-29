@@ -87,7 +87,13 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
     
     return pipeline
     
-        
+
+#adjsut function later
+def insert_3d(position):
+    """
+    input a 3d position
+    """
+    geo.insert_one({"loc" : [position[0],position[1]], "height": position[2]})        
     
 
 
