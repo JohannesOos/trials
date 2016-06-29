@@ -32,8 +32,15 @@ pipeline_2 = [{"$match": {"height": { "$lte": 5}}}]
 pipeline_3 = [{"$match": {"height": { "$gte": 4}}}]
 
 #query for 2d results
+for place in geo.aggregate(pipeline_1):
+    print place
+    
+print "first query done"
+    
+#query for 3d results
 for place in geo.aggregate(pipeline_1 + pipeline_2+ pipeline_3):
     print place
+
 
         
 
