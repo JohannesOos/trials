@@ -19,8 +19,6 @@ geo = db.trial_one
 for a in range(10):
     for b in range(10):
         for c in range(10):
-#            geo.insert_one({"loc" : { "lng" : a , "lat" : b }, "height": c })
-        # better to be don ewith list
             geo.insert_one({"loc" : [a,b], "height": c})
 
 #create 2d index   (sphere if earth surface / 2d if plane)    
@@ -94,6 +92,12 @@ def insert_3d(position, name_2d = "loc", name_height = "height"):
     input a 3d position
     returns a document for insert statement
     """
+    
+    #check if 3d coord
+    if len(position) != 3:
+        return "not 3d coordinates"
+    
+    #create document
     doc = {name_2d : [position[0],position[1]], name_height: position[2]}
     
     return doc
