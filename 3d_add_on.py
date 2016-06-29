@@ -40,6 +40,14 @@ print "first query done"
 #query for 3d results
 for place in geo.aggregate(pipeline_1 + pipeline_2+ pipeline_3):
     print place
+    
+def rec_3d_add(query):
+    """
+    input: a 3d query of form is_inside([[a1,a2], [b1,b2], [c1,c2]])
+    database must have coordinates of form ({"loc" : [a,b], "height": c})
+    return: a translated query
+    """
+    pass
 
 
         
