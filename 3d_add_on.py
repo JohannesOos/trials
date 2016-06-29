@@ -89,11 +89,15 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
     
 
 #adjsut function later
-def insert_3d(position):
+def insert_3d(position, name_2d = "loc", name_height = "height"):
     """
     input a 3d position
+    returns a document for insert statement
     """
-    geo.insert_one({"loc" : [position[0],position[1]], "height": position[2]})        
+    doc = {name_2d : [position[0],position[1]], name_height: position[2]}
+    
+    return doc
+           
     
 
 
@@ -102,6 +106,7 @@ def insert_3d(position):
 
 ################################
 
+#in cubic
 search = [[2,2,2], [3,3,2],[2,2,4]]
 pipe =  rec_3d_pipe(search[0],search[1],search[2])
 
@@ -109,7 +114,10 @@ print pipe
 
 for place in geo.aggregate(pipe):
     print place
-
+    
+#insert
+    
+geo.insert_one(insert_3d([11,11,11]))
         
 
 
