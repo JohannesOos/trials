@@ -110,18 +110,22 @@ def insert_3d(position, name_2d = "loc", name_height = "height"):
 
 ################################
 
-#in cubic
-search = [[2,2,2], [3,3,2],[2,2,4]]
-pipe =  rec_3d_pipe(search[0],search[1],search[2])
+#define if test shoudl be done
+test = False
 
-print pipe
-
-for place in geo.aggregate(pipe):
-    print place
+#if we want to test the tests shoudl be run
+if test:
+    #in cubic
+    search = [[2,2,2.5], [3,3,2.5],[2,2,4]]
+    pipe =  rec_3d_pipe(search[0],search[1],search[2])
     
-#insert
+    print pipe
     
-geo.insert_one(insert_3d([11,11,11]))
+    for place in geo.aggregate(pipe):
+        print place
+        
+    #insert test     
+    geo.insert_one(insert_3d([11,11,11]))
         
 
 
