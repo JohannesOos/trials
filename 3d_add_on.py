@@ -89,7 +89,7 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
 #adjsut function later
 def insert_3d(position, name_2d = "loc", name_height = "height"):
     """
-    input a 3d position
+    input a 3d position of form list [a,b,c]
     returns a document for insert statement
     """
     
