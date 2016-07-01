@@ -65,8 +65,10 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
     
     
     # check if c is under or over a-b plane and adjust bounds accordingly
+    #define low ang height points
     low = c[2]
     high = a[2]
+    #if it is the other way around then swap high and low
     if a[2]< low:
         low = a[2]
         high = c[2]
@@ -77,7 +79,7 @@ def rec_3d_pipe(a,b,c, name_2d = "loc", name_height = "height"):
     # create upper boundary
     upper = [{"$match": {name_height: { "$lte": high}}}]
     
-    #create pymongo height check
+    #create pymongo height check pipeline
     pipe_height = lower + upper
     
     #create pymongo complete check
