@@ -111,16 +111,19 @@ def insert_3d(position, name_2d = "loc", name_height = "height"):
 ################################
 
 #define if test shoudl be done
-test = False
+test = True
 
 #if we want to test the tests shoudl be run
 if test:
-    #in cubic
+
+    #create the three points which make the cuboid
     search = [[2,2,2.5], [3,3,2.5],[2,2,4]]
+    #create pipeline through defined functions
     pipe =  rec_3d_pipe(search[0],search[1],search[2])
     
     print pipe
     
+    #run aggregation pipeline    
     for place in geo.aggregate(pipe):
         print place
         
