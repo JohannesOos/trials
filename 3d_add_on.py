@@ -1,4 +1,15 @@
 
+"""
+this is a trial file
+purpose is to use mongodbs geospaial index
+and at the same time extend it to 3d 
+mongodb does nto support this,
+so a pymongo script will simulate this
+it is importnat to make sure that all 
+computation is done on the server
+and not on the machine the pythn script runs
+"""
+
 import pymongo
 
 # establish a connection to the database
