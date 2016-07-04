@@ -29,7 +29,7 @@ geo = db.trial_one
 #insert 1000 3d coordinates with 0-10 all combos
 for a in range(10):
     for b in range(10):
-        for c in range(10):
+        for c in range(11):
             geo.insert_one({"loc" : [a,b], "height": c})
 
 #create 2d index   (sphere if earth surface / 2d if plane)    
